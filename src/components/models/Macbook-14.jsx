@@ -26,7 +26,7 @@ export default function MacbookModel14(props) {
       if (child.isMesh) {
         // Change color if only the part name is NOT noChangesParts
         if (!noChangeParts.includes(child.name)) {
-          child.material.color = new Color(color)
+          child.material.color = new Color(color.value)
         }
       }
     })
