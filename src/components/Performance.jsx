@@ -15,7 +15,7 @@ const Performance = () => {
         // TEXT FADE-IN
         gsap.fromTo(
             ".content",
-            { autoAlpha: 0, y: 40 },
+            { autoAlpha: 0.4, y: 40 },
             {
                 autoAlpha: 1,
                 y: 0,
@@ -49,7 +49,7 @@ const Performance = () => {
                 gsap.set(`.${pos.id}`, {
                     y: 100,
                     scale: 0.85,
-                    autoAlpha: 0,
+                    autoAlpha: 0.3,
                     position: "absolute",
                 });
 
