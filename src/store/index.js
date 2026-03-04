@@ -1,21 +1,3 @@
-// // import { create } from "zustand";
-
-// // const useMacbookStore = create((set) => ({
-// //     color: { name: "Dark", value: "#2e2c2e" },
-// //     setColor: (color) => set({ color }),
-
-// //     scale: 0.08,
-// //     setScale: (scale) => set({ scale }),
-
-// //     reset: () => set({ color: '#2e2c2e', scale: 0.08 })
-
-
-
-
-
-// // }))
-// // export default useMacbookStore
-
 // import { create } from "zustand";
 
 // const useMacbookStore = create((set) => ({
@@ -47,6 +29,7 @@
 
 import { create } from "zustand";
 
+
 const useMacbookStore = create((set) => ({
     color: { name: "Dark", value: "#2e2c2e" },
 
@@ -55,10 +38,14 @@ const useMacbookStore = create((set) => ({
     setColor: (color) => set({ color }),
     setSelectedModel: (model) => set({ selectedModel: model }),
 
+    texture: '/videos/feature-1.mp4',
+    setTexture: (texture) => set({ texture }),
+
     reset: () =>
         set({
             color: { name: "Dark", value: "#2e2c2e" },
             selectedModel: "16",
+            texture: '/videos/feature-1.mp4',
         }),
 }));
 
