@@ -13,14 +13,26 @@ export default function MacbookModel(props) {
 
   const screen = useVideoTexture(texture)
   useEffect(() => {
+    const originalColors = new Map()
+
     scene.traverse((child) => {
       if (child.isMesh) {
         // Change color if only the part name is NOT in noChangeParts
         if (!noChangeParts.includes(child.name)) {
+          // Store original color for cleanup
+          if (!originalColors.has(child)) {
+            originalColors.set(child, child.material.color.clone())
+          }
           child.material.color = new Color(color.value)
         }
       }
     })
+
+    return () => {
+      originalColors.forEach((originalColor, child) => {
+        child.material.color.copy(originalColor)
+      })
+    }
   }, [color, scene])
 
 

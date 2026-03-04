@@ -27,8 +27,8 @@
 
 // export default useMacbookStore;
 
-import { texture } from "three/src/nodes/accessors/TextureNode";
 import { create } from "zustand";
+
 
 const useMacbookStore = create((set) => ({
     color: { name: "Dark", value: "#2e2c2e" },

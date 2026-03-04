@@ -16,7 +16,11 @@ const ModelScroll = () => {
     const { setTexture } = useMacbookStore()
 
     // Pre-load all features videos during component mount
+    const preloadedVideos = useRef([])
+
+    // Pre-load all features videos during component mount
     useEffect(() => {
+        const videos = []
         featureSequence.forEach((feature, index) => {
             const v = document.createElement('video')
             Object.assign(v, {
@@ -27,7 +31,17 @@ const ModelScroll = () => {
                 crossOrigin: 'anonymous'
             })
             v.load()
+            videos.push(v)
         })
+        preloadedVideos.current = videos
+
+        return () => {
+            preloadedVideos.current.forEach(v => {
+                v.src = ''
+                v.load()
+            })
+            preloadedVideos.current = []
+        }
     }, [])
 
     useGSAP(() => {
@@ -90,7 +104,7 @@ const Features = () => {
         <section id='features'>
             <h2>See it all in a new light.</h2>
 
-            <Canvas id='f-canvas' camera={{}}>
+            <Canvas id='f-canvas' camera={{ position: [0, 0, 5], fov: 50 }}>
                 <StudioLights />
                 <ambientLight intensity={0.5} />
                 <ModelScroll />
